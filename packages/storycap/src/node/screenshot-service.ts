@@ -89,6 +89,7 @@ export function createScreenshotService({
 
         if (buffer) {
           const suffix = variantKey.isDefault && defaultVariantSuffix ? [defaultVariantSuffix] : variantKey.keys;
+          logger.log(`kind: ${story.kind}\nstory: ${story.story}\nvariant: ${suffix.join(',')}`);
           const path = await fileSystem.saveScreenshot(story.kind, story.story, suffix, buffer);
           logger.log(`Screenshot stored: ${logger.color.magenta(path)} in ${elapsedTime} msec.`);
           return true;
